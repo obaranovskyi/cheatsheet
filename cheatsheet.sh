@@ -11,10 +11,9 @@ function cheatsheet() {
   if [[ ! $value == *"404: Not Found"* ]]; then
     if ! command -v bat &> /dev/null
     then
-      echo "$value"
-    else
-      # echo "$value" | bat -l 'markdown' -n
       more $value
+    else
+      echo "$value" | bat -l 'markdown' -n
     fi
   fi
 
