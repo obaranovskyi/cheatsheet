@@ -1,9 +1,22 @@
-# Terminology
-
-Term          | Description                       | Similar Java term |
---------------|-----------------------------------|-------------------|
-Dockerfile    | Infrastructure as code            | .java             |
-
+```
++----------------+--------------------------------------------------+-------------------+
+| Term           | Description                                      | Similar Java Term |
++----------------+--------------------------------------------------+-------------------+
+| **Dockerfile** | Infrastructure as code                           | .java             |
++----------------+--------------------------------------------------+-------------------+
+| **Build**      | Creating an image snapshot from the Dockerfile   | compile / package |
++----------------+--------------------------------------------------+-------------------+
+| **Image**      | VM Snapshot                                      | .class / .jar     | 
++----------------+--------------------------------------------------+-------------------+
+| **Tag**        | Version of image / release                       | jar version       | 
++----------------+--------------------------------------------------+-------------------+
+| **Container**  | Light weight VM                                  | instances /       |
+|                | Created from a specific image version            | Objects           |
+|                | We can create multiple container from same Image |                   |
++----------------+--------------------------------------------------+-------------------+
+| **DockerHub**  | Image Repository                                 | Maven repository  |
++----------------+--------------------------------------------------+-------------------+
+```
 
 # General commands
 * `docker` - list of commands
@@ -164,3 +177,160 @@ version: '3.7'
 
 # Resources
 - [Fireship - Learn Docker in 7 Easy Steps](https://www.youtube.com/watch?v=gAkwW2tuIqE)
+
+
+# General commands
+* `docker` - list of commands
+* `docker ps --help` - help
+
+# Containers
+A container is just a running process.
+
+* `docker ps` - List of running containers (better `ps`)  
+* `docker ps -a` - Display all containers, even those that are not running at the moment
+* `docker ps -aq` - Display all containers, even those that are not running at the moment 
+  (gives only ids)
+
+- `docker run nginx:latest` - Run the container
+- `docker run -d nginx:latest` - Run the container in daemon mode  
+- `docker run -d -p 8080:80 nginx:latest` - Run container on particular port,
+   here we are mapping container port 8080 to host port 80.
+- `docker run -d -p 3000:80 -p 4000:80 nginx:latest` - Run the container and expose multiple ports
+- `docker run --name our_website -d -p 3000:80 nginx:latest` - Run the container and give it name
+
+* `docker stop 7cc16e2` - Stop the container, where `7cc16e2` is the container id  
+* `docker stop somename` - Stop the container, where the `somename` is the name of container  
+
+- `docker rm somename` - remove container by name
+- `docker rm $(docker ps -aq)` - remove all containers  
+- `docker rm f $(docker ps -aq)` - force remove all container  
+
+# Images
+A docker image is a template for running docker containers
+
+Images can be uploaded to the cloud in both public and private registries,
+then any developer or server that wants to run that software can pull the image
+down to create a container which is just a running process of that image.
+In other words one image file can be used to spawn the same process multiple times 
+in multiple places. And It's at that point where tools like kubernetes and 
+swarm come into play to scale containers to an infinite workload.
+
+* `docker images`, `docker image ls` - List of images  
+* `docker images -aq` - Display all images
+
+- `docker pull nginx` - Install Image  
+
+* `docker rmi nginx`, `docker image rm nginx` - Remove Image  
+* `docker image rm -f nginx` - Force remove image  
+* `docker image rm $(docker images -aq)` - Remove multiple images
+
+- `docker run -i -t ubuntu:12.04 /bin/bash` - Run image as a container with name and bash
+- `docker run -i -t 8dbd9e292a96 /bin/bash` - Run image as a container with ID and bash
+- `docker -d -i -t 8dbd9e292a96` - Run docker in as a daemon 
+- `docker run -p 4000:8080 8dbd9e292a96` - Run docker image and expose the port 4000 (open http://localhost:4000)
+- `docker run -d -p 3000:4000 73b7a5c7526d` - Run docker image and expose the 4000 as a daemon 
+- `docker run node-docker` - Run image inside of docker container
+
+* `docker push` - publish to docker hub (needs to be tested???)
+
+**INFO**: More docker images can be found here: https://docs.docker.com/engine/reference/run/ \
+**INFO**: More ready to use images can be found here - https://hub.docker.com/ \
+**INFO**: We get `<none>` tag because we add the same image with the same tag.
+
+# Dockerfile 
+Dockerfile is an bluprint for building docker image.
+
+Here is a angular ssr and docker example:
+
+```docker
+FROM node:18.12.1
+
+WORKDIR /app
+
+COPY package*.json ./
+
+# shell form
+RUN npm install
+
+COPY . .
+
+# exec form (the preferred way)
+CMD ["npm", "run", "build:start:ssr"]
+
+# to build docker image run `build` command
+# . at the end is the location of docker file
+# docker build -t obaranovskyi/poc-angular:1.0.0 .
+```
+
+![](dockerfile-image-example.png)
+
+# Volumes
+Volumes are the preferred mechanism for persisting data
+generated by and used by Docker containers.
+
+- Docker Volumes allows sharing of data. Files and Folders. 
+- And also between **host** and **container**
+- And also between the **containers**
+
+# Logs
+* `docker logs db07a60692f` - Check logs by id
+* `docker logs -f db07a60692f` - Watch logs online in real time (`f` stands for follow)
+
+# Bash into containers
+* `docker exec -it db07a60692f /bin/bash` - run bash in the container (it might fail if there is no bash)
+
+To resolve this:
+1. Run `docker inspect db07a60692f | nvim`
+2. Search for `Cmd`
+3. And probably you would need to change from `/bin/bash` to `/bin/sh`, like this:
+```bash
+docker exec -it db07a60692f /bin/sh
+```
+**Note:** there is no Vim/Neovim but there might be Vi.
+To exit enter `exit`.
+
+# Docker compose
+* `docker compose up` - Run docker compose
+* `docker compose down` - Stop docker compose
+
+Angular MFE example:
+```yml
+version: '3.7'
+    
+    services:
+        # learn-it-main-ui:
+        #     image: learn-it-main-ui
+        #     build: ./learn-it-main-ui
+        #     expose:
+        #         - 4200
+        #     ports:
+        #         - 4200:4200
+        #     restart: on-failure
+    
+        learn-it-auth-ui:
+            image: learn-it-auth-ui
+            build: ./learn-it-auth-ui
+            expose:
+                - 4201
+            ports:
+                - 4201:4201
+            restart: on-failure
+    
+        # learn-it-words-ui:
+        #     image: learn-it-words-ui
+        #     build: ./learn-it-words-ui
+        #     expose:
+        #         - 4202
+        #     ports:
+        #         - 4202:4202
+        #     restart: on-failure
+    
+        learn-it-home-ui:
+            image: learn-it-home-ui
+            build: ./learn-it-home-ui
+            expose:
+                - 4203
+            ports:
+                - 4203:4203
+            restart: on-failure
+```

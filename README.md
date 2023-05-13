@@ -28,9 +28,9 @@ function cheatsheet() {
 function cheatsheet_list() {
   local value=$(
     curl -s "${url}/${repo_name}/tree/${main_src}" | \
-    grep '>.*\.md<' |                               \
-    sed -e 's/<[^>]*>//g' |                         \
-    sed -e 's/\.md//g' |                            \
+    grep '>.*\.md<'                                | \
+    sed -e 's/<[^>]*>//g'                          | \
+    sed -e 's/\.md//g'                             | \
     awk '{print $1}'
   )
   echo "$value"
