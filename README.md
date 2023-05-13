@@ -4,7 +4,7 @@
 
 
 ```bash
-wget -O - https://raw.githubusercontent.com/obaranovskyi/cheatsheet/main/cheatsheet.sh | bash
+echo $(wget -O - https://raw.githubusercontent.com/obaranovskyi/cheatsheet/main/cheatsheet.sh) >> ~/.bashrc
 ```
 
 ### Manual installation
