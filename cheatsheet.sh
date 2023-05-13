@@ -6,8 +6,8 @@ main_src='main/src'
 
 
 function cheatsheet() {
-  local value=curl -s "${raw_url}/${repo_name}/${main_src}/$1.md"
-  value=echo $value | sed -e 's/404: Not Found//g'
+  local value=$(curl -s "${raw_url}/${repo_name}/${main_src}/$1.md")
+  value=$(echo $value | sed -e 's/404: Not Found//g')
 
   if [ ! -z "$value" ]
   then
