@@ -1,6 +1,14 @@
 # cheatsheet
 
 ## Installation
+
+
+```bash
+wget -O - https://raw.githubusercontent.com/obaranovskyi/cheatsheet/main/cheatsheet.sh | bash
+```
+
+## Manual installation
+
 Add to you `.bashrc`:
 
 ```bash
@@ -38,12 +46,6 @@ function cheatsheet_list() {
 
 alias cs="cheatsheet"
 alias csl="cheatsheet_list"
-```
-
-
-Or you can run this script:
-```bash
-wget -O - http://dl.dropbox.com/u/11210438/flockonus-stack.sh | bash
 ```
 
 
