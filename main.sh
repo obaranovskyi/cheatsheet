@@ -1,9 +1,3 @@
-# cheatsheet
-
-## Installation
-Add to you `.bashrc`:
-
-```bash
 repo_name='obaranovskyi/cheatsheet'
 url='https://github.com'
 raw_url='https://raw.githubusercontent.com'
@@ -38,17 +32,3 @@ function cheatsheet_list() {
 
 alias cs="cheatsheet"
 alias csl="cheatsheet_list"
-```
-
-
-Or you can run this script:
-```bash
-wget -O - http://dl.dropbox.com/u/11210438/flockonus-stack.sh | bash
-```
-
-
-**Note** If you want to have colored markdown output install [bat](https://github.com/sharkdp/bat)
-
-- `csl` - display available cheat sheets
-- `cs <app-name>` - display cheat sheet for `<app-name>`
-
