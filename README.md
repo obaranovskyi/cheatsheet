@@ -1,13 +1,13 @@
 # cheatsheet
 
-## Installation
+### Installation
 
 
 ```bash
 wget -O - https://raw.githubusercontent.com/obaranovskyi/cheatsheet/main/cheatsheet.sh | bash
 ```
 
-## Manual installation
+### Manual installation
 
 Add to you `.bashrc`:
 
@@ -48,6 +48,7 @@ alias cs="cheatsheet"
 alias csl="cheatsheet_list"
 ```
 
+### Commands
 
 **Note** If you want to have colored markdown output install [bat](https://github.com/sharkdp/bat)
 
