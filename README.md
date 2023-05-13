@@ -4,7 +4,7 @@
 
 
 ```bash
-echo $(wget -O - https://raw.githubusercontent.com/obaranovskyi/cheatsheet/main/cheatsheet.sh) >> ~/.bashrc
+wget -O - https://raw.githubusercontent.com/obaranovskyi/cheatsheet/main/cheatsheet.sh >> ~/.bashrc
 ```
 
 ### Manual installation
@@ -19,7 +19,7 @@ main_src='main/src'
 
 
 function cheatsheet() {
-  local value=$(curl -s "${raw_url}/${repo_name}/${main_src}/$1.md")
+  local value=curl -s "${raw_url}/${repo_name}/${main_src}/$1.md"
   value=$(echo $value | sed -e 's/404: Not Found//g')
 
   if [ ! -z "$value" ]
