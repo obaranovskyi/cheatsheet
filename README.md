@@ -1,8 +1,8 @@
 # cheatsheet
 
 ## Installation
-1. Install first [bat](https://github.com/sharkdp/bat) 
-2. Add to you .bashrc
+Add to you `.bashrc`:
+
 ```bash
 repo_name='obaranovskyi/cheatsheet'
 url='https://github.com'
@@ -39,9 +39,8 @@ function cheatsheet_list() {
 alias cs="cheatsheet"
 alias csl="cheatsheet_list"
 ```
-3. Run 
-```bash
-cs docker
-```
+**Note** If you want to have colored markdown output install [bat](https://github.com/sharkdp/bat)
 
+- `csl` - display available cheat sheets
+- `cs <app-name>` - display cheat sheet for `<app-name>`
 
