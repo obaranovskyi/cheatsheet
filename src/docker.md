@@ -1,5 +1,9 @@
 # Terminology
-![](./docker-terminology.png)
+
+Term          | Description                       | Similar Java term |
+--------------|-----------------------------------|-------------------|
+Dockerfile    | Infrastructure as code            | .java             |
+
 
 # General commands
 * `docker` - list of commands
