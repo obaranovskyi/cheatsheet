@@ -18,16 +18,31 @@ url='https://github.com'
 raw_url='https://raw.githubusercontent.com'
 main_src='main/src'
 
-function cheatsheet() {
+function cs() {
   local value=$(curl -s "${raw_url}/${repo_name}/${main_src}/$1.md")
-
   if [[ ! $value == *"404: Not Found"* ]]; then
-    if ! command -v glow &> /dev/null
-    then
-      echo "$value" | less
-    else
-      echo $value | glow
-    fi
+    echo $value
+  fi
+}
+
+function csbat() {
+  local value=$(curl -s "${raw_url}/${repo_name}/${main_src}/$1.md")
+  if [[ ! $value == *"404: Not Found"* ]]; then
+    echo "$value" | bat -l 'markdown' -n
+  fi
+}
+
+function csglow() {
+  local value=$(curl -s "${raw_url}/${repo_name}/${main_src}/$1.md")
+  if [[ ! $value == *"404: Not Found"* ]]; then
+    echo $value | glow
+  fi
+}
+
+function csless() {
+  local value=$(curl -s "${raw_url}/${repo_name}/${main_src}/$1.md")
+  if [[ ! $value == *"404: Not Found"* ]]; then
+    echo $value | less
   fi
 }
 
@@ -35,10 +50,8 @@ function cheatsheet_list() {
   local values=$(curl -s "${raw_url}/${repo_name}/main/content.md")
   echo $values
 }
-
-alias cs="cheatsheet"
-alias csl="cheatsheet_list"
 ```
+
 
 ### Commands
 
@@ -46,4 +59,7 @@ alias csl="cheatsheet_list"
 
 - `csl` - display available cheat sheets
 - `cs <app-name>` - display cheat sheet for `<app-name>`
+- `csbat <app-name>` - display cheat sheet for `<app-name>` using `bat` app
+- `csglow <app-name>` - display cheat sheet for `<app-name>` using `glow` app
+- `csless <app-name>` - display cheat sheet for `<app-name>` using `less` app
 

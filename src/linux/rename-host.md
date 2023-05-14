@@ -1,1 +1,3 @@
-this is just a test
+- Open file `/etc/hostname` with `sudo` rights, and update to new hostname
+- Open file `/etc/hosts` with `sudo` rights, and update to new hostname
+- Restart terminal. In case it's a ssh connection, reconnect.
