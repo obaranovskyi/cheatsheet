@@ -1,0 +1,3 @@
+- open folder `/etc/lightdm`
+- `vim lightdm.conf`
+- comment out line `autologin-user=pi` (or mint, etc.)

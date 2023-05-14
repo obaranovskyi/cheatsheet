@@ -7,6 +7,10 @@
 ├── htop.md
 ├── kitty.md
 ├── linux
+│   ├── add-configure-user.md
+│   ├── configure-ssh.md
+│   ├── givin-user-root-privileges.md
+│   ├── remove-autologin.md
 │   └── rename-host.md
 ├── mac.md
 ├── nginx.md
@@ -16,6 +20,7 @@
 ├── terminal.md
 ├── tmux.md
 ├── ubuntu.md
+├── virtual-box.md
 └── xmonad.md
 
-1 directory, 18 files
+1 directory, 23 files
