@@ -9,6 +9,7 @@
 │   └── rename-host.md
 ├── mac.md
 ├── nginx.md
+├── printf.md
 ├── ranger.md
 ├── scp.md
 ├── terminal.md
@@ -16,4 +17,4 @@
 ├── ubuntu.md
 └── xmonad.md
 
-1 directory, 16 files
+1 directory, 17 files
