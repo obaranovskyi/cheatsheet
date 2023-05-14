@@ -31,8 +31,7 @@ function csless() {
   fi
 }
 
-function cheatsheet_list() {
-  local values=$(curl -s "${raw_url}/${repo_name}/main/content.md")
-  echo $values
+function csl() {
+  printf "$(curl -s "${raw_url}/${repo_name}/main/content.md")"
 }
 
