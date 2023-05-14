@@ -1,4 +1,5 @@
 ├── alacrity.md
+├── command-line-arguments.md
 ├── dmonad.md
 ├── docker.md
 ├── fzf.md
@@ -17,4 +18,4 @@
 ├── ubuntu.md
 └── xmonad.md
 
-1 directory, 17 files
+1 directory, 18 files
