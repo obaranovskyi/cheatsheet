@@ -2,6 +2,8 @@
 `tmux kill-session -t mysession` - Kill session
 `tmux ls` - List sessions
 `tmux attach-session -t mysession` - List sessions
+`<prefix> (`, `<prefix> )` - Switch between the sessions
+`<prefix> s` - Display sessions, possible switch
 `:rename-session newmysessionname` - Rename the session
 `<prefix>:` - Enter the tmux terminal
 `<prefix> c` - Create new window
