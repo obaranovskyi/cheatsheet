@@ -6,32 +6,31 @@ main_src='main/src'
 function cs() {
   local value=$(curl -s "${raw_url}/${repo_name}/${main_src}/$1.md")
   if [[ ! $value == *"404: Not Found"* ]]; then
-    echo $value
+    printf "$value"
   fi
 }
 
 function csbat() {
   local value=$(curl -s "${raw_url}/${repo_name}/${main_src}/$1.md")
   if [[ ! $value == *"404: Not Found"* ]]; then
-    echo "$value" | bat -l 'markdown' -n
+    printf "$value" | bat -l 'markdown' -n
   fi
 }
 
 function csglow() {
   local value=$(curl -s "${raw_url}/${repo_name}/${main_src}/$1.md")
   if [[ ! $value == *"404: Not Found"* ]]; then
-    echo $value | glow
+    printf "$value" | glow
   fi
 }
 
 function csless() {
   local value=$(curl -s "${raw_url}/${repo_name}/${main_src}/$1.md")
   if [[ ! $value == *"404: Not Found"* ]]; then
-    echo $value | less
+    printf "$value" | less
   fi
 }
 
 function csl() {
   printf "$(curl -s "${raw_url}/${repo_name}/main/content.md")"
 }
-
