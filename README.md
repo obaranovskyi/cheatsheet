@@ -42,7 +42,7 @@ alias csl="cheatsheet_list"
 
 ### Commands
 
-**Note** If you want to have colored markdown output install [bat](https://github.com/sharkdp/bat)
+**Note** If you want to have colored markdown output install [glow](https://github.com/charmbracelet/glow)
 
 - `csl` - display available cheat sheets
 - `cs <app-name>` - display cheat sheet for `<app-name>`
