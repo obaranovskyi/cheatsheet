@@ -63,8 +63,14 @@ ExecStart=/usr/bin/nginx
 
 - If nginx is running we need to stop it `nginx -s stop`
 - Check if it's stopped `ps aux | grep nginx` (should be one not three)
-- Start nginx with systemctl command `systemctl start nginx`
+- Start nginx with systemctl command `systemctl start nginx` (to stop `systemctl stop nginx`)
 - Now we can check nginx status `systemctl status nginx`
+
+---
+
+# Enable nginx startup on boot
+- `systemctl enable nginx`
+- Reboot the machine, run `reboot`
 
 ---
 
@@ -75,6 +81,8 @@ ssl module. We can do it when we run configure script
 (`./configure ....`) by adding this flag `--with-http_ssl_module`.
 If more information is needed we can open this module and read 
 about configuration etc.
+
+---
 
 ## Uninstall 
 Removes all but configs files:
@@ -89,33 +97,7 @@ After using any of the above commands,
 use this in order to remove dependencies used by nginx 
 which are no longer required
 
-
-## Starting, Stopping, and Reloading Configuration
-
-To control nginx use this syntax:
-`nginx -s signal`
-
-```bash
-service nginx status
-```
-You can run also:
-- `stop` - 
-- `start`
-- `restart`
-- `reload`
-
-to check all commands run `service nginx`
-
-Note: there is one more way to check if nginx is running:
-```bash
-sudo lsof -i TCP:80
-```
-
-Another way to start/stop nginx on Ubuntu is:
-```bash
-sudo systemctl start nginx
-sudo systemctl stop nginx
-```
+---
 
 #### Checking if nginx configuration doesn't have any issues
 ```bash
