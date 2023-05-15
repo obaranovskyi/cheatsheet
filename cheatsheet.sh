@@ -10,27 +10,27 @@ function cs() {
   fi
 }
 
-function csbat() {
+function csb() {
   local value=$(curl -s "${raw_url}/${repo_name}/${main_src}/$1.md")
   if [[ ! $value == *"404: Not Found"* ]]; then
     printf "$value" | bat -l 'markdown' -n
   fi
 }
 
-function csglow() {
+function csg() {
   local value=$(curl -s "${raw_url}/${repo_name}/${main_src}/$1.md")
   if [[ ! $value == *"404: Not Found"* ]]; then
     printf "$value" | glow
   fi
 }
 
-function csless() {
+function csl() {
   local value=$(curl -s "${raw_url}/${repo_name}/${main_src}/$1.md")
   if [[ ! $value == *"404: Not Found"* ]]; then
     printf "$value" | less
   fi
 }
 
-function csl() {
+function cslist() {
   printf "$(curl -s "${raw_url}/${repo_name}/main/content.md")"
 }
