@@ -112,6 +112,7 @@ http {
 This is called `Main Context` and is where we configure the global directives
 that apply to the master process.
 
+
 ### Directive
 ```nginx
 events {
@@ -155,6 +156,7 @@ On ubuntu `/etc/nginx/sites-available/default`
 
 to find `sudo find . -type f -name default`
 
+---
 
 #### Configuration explanation
 * `ssl_certificate` - specifies public key
