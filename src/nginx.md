@@ -27,6 +27,16 @@ You need to Build nginx from source:
 
 ---
 
+# Modules
+Open documentation, and there will be list of modules at the bottom of the page.
+For example if we are going to use `ssl` we need to install
+ssl module. We can do it when we run configure script
+(`./configure ....`) by adding this flag `--with-http_ssl_module`.
+If more information is needed we can open this module and read 
+about configuration etc.
+
+---
+
 ## Adding nginx as a `systemd` service
 Helps to start, stop, restart, reload etc.
 Makes start boot much simpler.
@@ -74,13 +84,42 @@ ExecStart=/usr/bin/nginx
 
 ---
 
-# Modules
-Open documentation, and there will be list of modules at the bottom of the page.
-For example if we are going to use `ssl` we need to install
-ssl module. We can do it when we run configure script
-(`./configure ....`) by adding this flag `--with-http_ssl_module`.
-If more information is needed we can open this module and read 
-about configuration etc.
+# Terminology
+
+### Context 
+Context is the same as scope
+- `events { ... }` is known as the context.
+
+Context might be nested, and inherited from the parent
+```nginx
+http {
+    index index.html index.html index.php;
+
+    include  mime.types;
+
+    server {
+        listen      80;
+        servername  mydomain.com;
+        access_log  /var/log/mydomain.com.access.log main;
+        root        html;
+
+        location /some_path {
+            add_header header_name header_value;
+        }
+    }
+}
+```
+This is called `Main Context` and is where we configure the global directives
+that apply to the master process.
+
+### Directive
+```nginx
+events {
+    worker_connections 1024;
+}
+```
+- Key/value pair in configuration are known as directives.
+In current case, `worker_connection 1024` is directive.
 
 ---
 
@@ -116,17 +155,6 @@ On ubuntu `/etc/nginx/sites-available/default`
 
 to find `sudo find . -type f -name default`
 
-#### Terminology
-```nginx
-events {
-    worker_connections 1024;
-}
-```
-
-- Key/value pair in configuration are known as directives.
-In current case, `worker_connection 1024` is directive.
-
-- `events { ... }` is known as the context.
 
 #### Configuration explanation
 * `ssl_certificate` - specifies public key
