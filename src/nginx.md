@@ -1,6 +1,8 @@
 ## Best Resources
 - nginx.org
 
+---
+
 ## Install
 
 ```bash
@@ -23,11 +25,50 @@ You need to Build nginx from source:
 - Start nginx by running `nginx`
 - Check if it's running `ps aux | grep nginx`, we can also `ping $(hostname -I | awk '{print $2}')`
 
+---
+
 ## Adding nginx as a `systemd` service
 Helps to start, stop, restart, reload etc.
 Makes start boot much simpler.
 
-## Modules
+- Open nginx.com and find nginx init script (`https://www.nginx.com/resources/wiki/start/topics/examples/initscripts/`)
+- Navigate to example `NGINX systemd service file`
+- Navigate to folder `/lib/systemd/system/nginx.service`
+- Create file `nginx.service`, with content:
+```
+[Unit]
+Description=The NGINX HTTP and reverse proxy server
+After=syslog.target network-online.target remote-fs.target nss-lookup.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+PIDFile=/run/nginx.pid
+ExecStartPre=/usr/sbin/nginx -t
+ExecStart=/usr/sbin/nginx
+ExecReload=/usr/sbin/nginx -s reload
+ExecStop=/bin/kill -s QUIT $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+```
+
+- We need to update some configurations
+```
+PIDFile=/var/run/nginx.pid 
+ExecStartPre=/usr/bin/nginx -t
+ExecStart=/usr/bin/nginx
+```
+
+- If nginx is running we need to stop it `nginx -s stop`
+- Check if it's stopped `ps aux | grep nginx` (should be one not three)
+- Start nginx with systemctl command `systemctl start nginx`
+- Now we can check nginx status `systemctl status nginx`
+
+---
+
+# Modules
 Open documentation, and there will be list of modules at the bottom of the page.
 For example if we are going to use `ssl` we need to install
 ssl module. We can do it when we run configure script
