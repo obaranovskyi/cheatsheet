@@ -7,10 +7,10 @@
 ├── htop.md
 ├── kitty.md
 ├── linux
-│   ├── givin-user-root-privileges.md
 │   ├── remove-autologin.md
 │   ├── rename-host.md
 │   ├── ssh.md
+│   ├── user-privileges.md
 │   └── user.md
 ├── mac.md
 ├── nginx.md
