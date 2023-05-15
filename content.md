@@ -11,9 +11,11 @@
 ├── htop.md
 ├── kitty.md
 ├── linux
+│   ├── ftp.md
 │   ├── remove-autologin.md
 │   ├── rename-host.md
 │   ├── ssh.md
+│   ├── systemd-service.md
 │   ├── user-privileges.md
 │   └── user.md
 ├── mac.md
@@ -27,4 +29,4 @@
 ├── virtual-box.md
 └── xmonad.md
 
-2 directories, 26 files
+2 directories, 28 files

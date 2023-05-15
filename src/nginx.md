@@ -124,6 +124,11 @@ In current case, `worker_connection 1024` is directive.
 
 ---
 
+## Configuration
+If we don't have anything in `events {}`, we still need to keep it to have valid nginx configuration.
+
+---
+
 ## Uninstall 
 Removes all but configs files:
 ```bash
