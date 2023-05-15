@@ -1,4 +1,8 @@
 ├── alacrity.md
+├── bash
+│   ├── bash.md
+│   ├── command-info.md
+│   └── declare.md
 ├── command-line-arguments.md
 ├── dmonad.md
 ├── docker.md
@@ -23,4 +27,4 @@
 ├── virtual-box.md
 └── xmonad.md
 
-1 directory, 23 files
+2 directories, 26 files
