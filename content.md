@@ -7,11 +7,11 @@
 ├── htop.md
 ├── kitty.md
 ├── linux
-│   ├── add-configure-user.md
-│   ├── configure-ssh.md
 │   ├── givin-user-root-privileges.md
 │   ├── remove-autologin.md
-│   └── rename-host.md
+│   ├── rename-host.md
+│   ├── ssh.md
+│   └── user.md
 ├── mac.md
 ├── nginx.md
 ├── printf.md
