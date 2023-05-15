@@ -81,3 +81,6 @@ force_local_logins_ssl=YES
 - Filezilla (I would prefer this, as after configuring ssl on remote cyberduck stopped working)
 - Cyberduck
 - Putty
+
+# Resources
+- [How to install an FTP server  on Ubuntu 22.04 with vsftp](https://www.youtube.com/watch?v=XNjOSY-wcb0)

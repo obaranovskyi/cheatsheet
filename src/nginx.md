@@ -125,6 +125,7 @@ In current case, `worker_connection 1024` is directive.
 ---
 
 ## Configuration
+The main file we're going to edit `/etc/nginx/nginx.conf`
 If we don't have anything in `events {}`, we still need to keep it to have valid nginx configuration.
 
 ---
@@ -148,18 +149,6 @@ which are no longer required
 ```bash
 sudo nginx -t
 ```
-
-#### Reload nginx 
-```bash
-sudo nginx -s reload
-```
-
-#### Configuration path:
-
-
-On ubuntu `/etc/nginx/sites-available/default`
-
-to find `sudo find . -type f -name default`
 
 ---
 
