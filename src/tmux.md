@@ -27,3 +27,5 @@
 `<prefix> {` - Swap current pane with the previous one
 `<prefix> <window_number>` - Go to window by the number
 `:move-window -t 4` - Update window number to `4`
+`swap-window -s 1 -t 2` - Swap windows, `1` and `2` are window numbers
+`swap-window -t -2` - Decrease window order on `-2` can be used `+5` etc.

@@ -24,6 +24,8 @@ You need to Build nginx from source:
 - Check if it's running `ps aux | grep nginx`, we can also `ping $(hostname -I | awk '{print $2}')`
 
 ## Adding nginx as a `systemd` service
+Helps to start, stop, restart, reload etc.
+Makes start boot much simpler.
 
 ## Modules
 Open documentation, and there will be list of modules at the bottom of the page.
