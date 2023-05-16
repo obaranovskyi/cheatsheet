@@ -67,8 +67,9 @@ force_local_logins_ssl=YES
 - Restart ftp server `sudo systemctl restart vsftpd`
 - Check the status `sudo systemctl status vsftpd`
 
+Note: sftp connection most likely will have port 21
 
-## Check ftp connection
+## Check ftp service status
 - `systemctl reload vsftpd`
 - `systemctl status vsftpd`
 
