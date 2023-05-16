@@ -1,64 +1,64 @@
-├── alacrity.md
-├── alias.md
-├── bash.md
-├── brew.md
-├── clipboard.md
-├── command-info.md
-├── command-line-arguments.md
-├── compress-archive.md
-├── curl.md
-├── date-time.md
-├── declare.md
-├── device-management.md
-├── df.md
-├── display.md
-├── dmonad.md
-├── docker.md
-├── encryption.md
-├── env-variables.md
-├── fd.md
-├── file-management.md
-├── folder-structure.md
-├── ftp.md
-├── fzf.md
-├── gathering-info.md
-├── git.md
-├── grep.md
-├── history.md
-├── htop.md
-├── kitty.md
-├── mac.md
-├── memory-management.md
-├── network-management.md
-├── nginx.md
-├── nvm.md
-├── open.md
-├── pandoc.md
-├── pass.md
-├── permissions.md
-├── pip.md
-├── printf.md
-├── process-management.md
-├── ranger.md
-├── remove-autologin.md
-├── rename-host.md
-├── scp.md
-├── sed.md
-├── sftp.md
-├── ssh.md
-├── system-management.md
-├── systemd-service.md
-├── terminal.md
-├── tmux.md
-├── trans.md
-├── trash.md
-├── ubuntu.md
-├── user-management.md
-├── venv.md
-├── vim.md
-├── virtual-box.md
-├── watch.md
-├── wc.md
-├── wikit.md
-└── xmonad.md
-
+      	
+     1	alacrity
+     2	alias
+     3	bash
+     4	brew
+     5	clipboard
+     6	command-info
+     7	command-line-arguments
+     8	compress-archive
+     9	curl
+    10	date-time
+    11	declare
+    12	device-management
+    13	df
+    14	display
+    15	dmonad
+    16	docker
+    17	encryption
+    18	env-variables
+    19	fd
+    20	file-management
+    21	folder-structure
+    22	ftp
+    23	fzf
+    24	gathering-info
+    25	git
+    26	grep
+    27	history
+    28	htop
+    29	kitty
+    30	mac
+    31	memory-management
+    32	network-management
+    33	nginx
+    34	nvm
+    35	open
+    36	pandoc
+    37	pass
+    38	permissions
+    39	pip
+    40	printf
+    41	process-management
+    42	ranger
+    43	remove-autologin
+    44	rename-host
+    45	scp
+    46	sed
+    47	sftp
+    48	ssh
+    49	system-management
+    50	syst-service
+    51	terminal
+    52	tmux
+    53	trans
+    54	trash
+    55	ubuntu
+    56	user-management
+    57	venv
+    58	vim
+    59	virtual-box
+    60	watch
+    61	wc
+    62	wikit
+    63	xmonad
