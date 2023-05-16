@@ -202,7 +202,7 @@ http {
         # Regex match 
         # `location ~ ...` - case sensitive
         # `location ~* ...` - case sensitive
-        location ~ /h(i|ello) {
+        location ~* /h(i|ello) {
             return 200 'This is regex match example. /hi, /hello will match.';
         }
 
@@ -217,6 +217,12 @@ http {
 }
 
 ```
+
+### Order of priorities
+1. Exact match (`=`)
+2. Preferential prefix match (`^~`)
+3. Regex match (`~*`)
+4. Prefix match ()
 
 ---
 
