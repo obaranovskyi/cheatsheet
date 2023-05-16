@@ -13,6 +13,7 @@
 ├── linux
 │   ├── folder-structure.md
 │   ├── ftp.md
+│   ├── permissions.md
 │   ├── remove-autologin.md
 │   ├── rename-host.md
 │   ├── sftp.md
@@ -30,4 +31,4 @@
 ├── virtual-box.md
 └── xmonad.md
 
-2 directories, 29 files
+2 directories, 30 files
