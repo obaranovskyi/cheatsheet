@@ -24,6 +24,7 @@
 * `chfn [username]` - Change the user's full name and other details in the system password file.
 * `visudo` - Edit the sudo configuration file, which controls which users can execute commands with elevated privileges.
 * `less /etc/passwd` - Display available users
+* `sudo cs` - Repeat last command with root user
 
 # Give root privilege through `sudoers` file
 - Open file `/etc/sudoers`

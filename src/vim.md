@@ -1,0 +1,2 @@
+- `vim -S <session-name.vim>` - Open session. `nvim` if it's neovim
+- `:mks ~/vim/sessions/session-name.vim`

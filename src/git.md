@@ -51,6 +51,7 @@
   * `git rm -f <file>` - remove file from working tree. File will be removed from folder, even if it just was updated.
   * `git rm --cached <file>` - A tracked file becomes untracked. This will remove the file from Git while preserving your local copy.
   * `git restore --staged <file>` - To restore staged file.
+  * `git restore .` - Discard unstaged changed in git
 
 <ins>**`git rm` vs `rm`:**</ins> `git rm` will remove the file from the index and working directory (only index if you used `--cached`) so that the deletion is staged for the next commit.
 
