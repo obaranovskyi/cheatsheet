@@ -25,6 +25,10 @@ You need to Build nginx from source:
 - Start nginx by running `nginx`
 - Check if it's running `ps aux | grep nginx`, we can also `ping $(hostname -I | awk '{print $2}')`
 
+### Module explanations
+- `--with-pcre` - using regular expression in `location` block
+- `--with-http_ssl_module` - ssl support
+
 ---
 
 # Modules
@@ -69,6 +73,7 @@ WantedBy=multi-user.target
 PIDFile=/var/run/nginx.pid 
 ExecStartPre=/usr/bin/nginx -t
 ExecStart=/usr/bin/nginx
+ExecReload=/usr/bin/nginx -s reload
 ```
 
 - If nginx is running we need to stop it `nginx -s stop`
@@ -91,6 +96,8 @@ Context is the same as scope
 - `events { ... }` is known as the context.
 
 Context might be nested, and inherited from the parent
+This is called `Main Context` and is where we configure the global directives
+that apply to the master process.
 ```nginx
 http {
     index index.html index.html index.php;
@@ -109,9 +116,6 @@ http {
     }
 }
 ```
-This is called `Main Context` and is where we configure the global directives
-that apply to the master process.
-
 
 ### Directive
 ```nginx
@@ -152,6 +156,66 @@ For this changes to take an effect reload nginx `sudo systemctl reload nginx`
 Note: you also need to give rights to that folder `/sites/demo`:
 ```bash
 chmod 777 /sites /sites/demo /sites/demo/*
+```
+
+---
+
+## Include another configuration
+In the previous example configuration, we won't have styles etc.
+This is because nginx doesn't understand the mime types.
+In nginx folder we have `mime.types` file.
+Let's include this file:
+```nginx
+events {}
+
+http {
+    include mime.types;
+    server {
+        # ...
+    }
+}
+
+```
+For this changes to take an effect reload nginx `sudo systemctl reload nginx`
+
+---
+
+## Location blocks
+This of location blocks as intercepting a requests based on its value and then
+doing something other than just trying to serve a matching file relative to the root directory.
+```nginx
+events {}
+http {
+    # ...
+    server {
+        # Prefix match 
+        # /other... , for example /other-other, or even /other/other also match
+        location /other {
+            return 200 'This is prefix match example. /other, /other-other, /other/other will match.';
+        }
+
+        # Exact match 
+        location = /exact {
+            return 200 'This is exact match example. Only /exact will match.';
+        }
+
+        # Regex match 
+        # `location ~ ...` - case sensitive
+        # `location ~* ...` - case sensitive
+        location ~ /h(i|ello) {
+            return 200 'This is regex match example. /hi, /hello will match.';
+        }
+
+        # Preferential prefix match 
+        # There is an priority by different match,
+        # for example Regex match has higher priority than Prefix match
+        # and Preferential prefix has higher priority than Regex match
+        location ^~ /hi {
+            return 200 'Preferential match. /hi, /hi-hi, /hi/hi will match.';
+        }
+    }
+}
+
 ```
 
 ---
