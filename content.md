@@ -1,70 +1,65 @@
 ├── alacrity.md
-├── bash
-│   ├── bash.md
-│   ├── command-info.md
-│   └── declare.md
+├── alias.md
+├── bash.md
 ├── brew.md
-├── cookbook
-│   └── linux
-│       ├── command-line-arguments.md
-│       ├── remove-autologin.md
-│       └── rename-host.md
+├── clipboard.md
+├── command-info.md
+├── command-line-arguments.md
+├── compress-archive.md
 ├── curl.md
+├── date-time.md
+├── declare.md
+├── device-management.md
 ├── df.md
+├── display.md
 ├── dmonad.md
 ├── docker.md
+├── encryption.md
+├── env-variables.md
 ├── fd.md
+├── file-management.md
+├── folder-structure.md
+├── ftp.md
 ├── fzf.md
+├── gathering-info.md
 ├── git.md
+├── grep.md
+├── history.md
 ├── htop.md
 ├── kitty.md
 ├── mac.md
+├── memory-management.md
+├── network-management.md
 ├── nginx.md
 ├── nvm.md
 ├── open.md
 ├── pandoc.md
 ├── pass.md
-├── python
-│   ├── pip.md
-│   └── venv.md
+├── permissions.md
+├── pip.md
+├── printf.md
+├── process-management.md
 ├── ranger.md
+├── remove-autologin.md
+├── rename-host.md
+├── scp.md
 ├── sed.md
+├── sftp.md
+├── ssh.md
+├── system-management.md
+├── systemd-service.md
+├── terminal.md
 ├── tmux.md
 ├── trans.md
 ├── trash.md
 ├── ubuntu.md
-├── unix
-│   ├── alias.md
-│   ├── clipboard.md
-│   ├── compress-archive.md
-│   ├── date-time.md
-│   ├── device-management.md
-│   ├── display.md
-│   ├── encryption.md
-│   ├── env-variables.md
-│   ├── file-management.md
-│   ├── folder-structure.md
-│   ├── ftp.md
-│   ├── gathering-info.md
-│   ├── grep.md
-│   ├── history.md
-│   ├── memory-management.md
-│   ├── network-management.md
-│   ├── permissions.md
-│   ├── printf.md
-│   ├── process-management.md
-│   ├── scp.md
-│   ├── sftp.md
-│   ├── ssh.md
-│   ├── system-management.md
-│   ├── systemd-service.md
-│   ├── terminal.md
-│   ├── user-management.md
-│   └── wc.md
+├── user-management.md
+├── venv.md
 ├── vim.md
 ├── virtual-box.md
 ├── watch.md
+├── wc.md
 ├── wikit.md
 └── xmonad.md
 
-5 directories, 63 files
+0 directories, 63 files
