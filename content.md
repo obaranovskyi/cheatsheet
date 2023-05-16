@@ -18,8 +18,7 @@
 │   ├── sftp.md
 │   ├── ssh.md
 │   ├── systemd-service.md
-│   ├── user-privileges.md
-│   └── user.md
+│   └── user-management.md
 ├── mac.md
 ├── nginx.md
 ├── printf.md
@@ -31,4 +30,4 @@
 ├── virtual-box.md
 └── xmonad.md
 
-2 directories, 30 files
+2 directories, 29 files
