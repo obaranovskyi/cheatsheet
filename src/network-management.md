@@ -3,6 +3,7 @@
 * `ip -4 a` - Swow only tcp/ip IPv4
 * `ip addr` - Show all network interfaces
 * `ip -6 a` - Show only tcp/ip IPv6
+* `curl -s https://api.ipify.org` - Display public ip address
 * `netstat -tulpn` - Show open ports (use sudo to show PID/Program name)
 * `netstat -rn | grep -P "default|UG"` - Show router ip address
 * `nmcli device wifi list` - Show wifi list

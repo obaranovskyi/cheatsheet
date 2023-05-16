@@ -128,6 +128,32 @@ In current case, `worker_connection 1024` is directive.
 The main file we're going to edit `/etc/nginx/nginx.conf`
 If we don't have anything in `events {}`, we still need to keep it to have valid nginx configuration.
 
+configuration file example:
+```nginx
+# Even if we don't have anything inside events
+# we still need to keep it to have a valid
+# nginx configuration
+events {}
+
+http {
+    server {
+        listen 80;
+        # domain, subdomain or ip address
+        server_name localhost;
+
+        # the root path from which nginx will be serving requests 
+        root /sites/demo;
+
+    }
+}
+```
+
+For this changes to take an effect reload nginx `sudo systemctl reload nginx`
+Note: you also need to give rights to that folder `/sites/demo`:
+```bash
+chmod 777 /sites /sites/demo /sites/demo/*
+```
+
 ---
 
 ## Uninstall 
