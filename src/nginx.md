@@ -180,7 +180,7 @@ For this changes to take an effect reload nginx `sudo systemctl reload nginx`
 
 ---
 
-## Location blocks
+# Location blocks
 This of location blocks as intercepting a requests based on its value and then
 doing something other than just trying to serve a matching file relative to the root directory.
 ```nginx
@@ -227,7 +227,101 @@ http {
 ---
 
 # Variables
+Variables exist in two forms:
+- Configuration Variables `set $var 'something'`
+- NGINX Module Variables `$http`, `$uri`, `$args`
+    - all variables are listed here: https://nginx.org/en/docs/varindex.html
+    - ngx_http_core_module and ngx_http_log_module are part of nginx, no need to additionally install something
 
+To check the value of the variables we can return the value
+
+```nginx
+events {}
+
+http {
+    include mime.types;
+    server {
+        listen      80;
+        server_name localhost;
+        root        /sites/demo;
+
+        # - Custom variable example
+        #   value can be integer, string or boolean 
+        # - $host, $uri predefined and $args is query string 
+        set $name "John";
+        location /inspect {
+            return 200 "host=$host,\nuri=$uri,\nargs=$args,\name=$name"
+        }
+
+    }
+}
+```
+
+---
+
+# Rewrites and Redirects
+- `rewrite pattern URI`
+- `return status URI`
+
+If we redirect with `return` we send 307 and URI where to redirect
+for example:
+```nginx
+events {}
+
+http {
+    include mime.types;
+    server {
+        listen      80;
+        server_name localhost;
+        root        /sites/demo;
+
+        rewrite ^/incorrecturl/\w+ /inspect;
+
+        location /inspect {
+            # 307 is redirect 
+            return 307 /sites.png
+        }
+
+    }
+}
+```
+When we do `rewrite` it will be reevaluated again and go through the url.
+
+---
+
+# Try files
+- `try_files path1 path2 finalPath;` - Allows engine check for resource to respond with any number of locations relative to the root
+  For example, if path1 doens't exists go and check path2 if path2 doens't exist check finalPath, last path should be reliant.
+
+```nginx
+events {}
+
+http {
+    include mime.types;
+    server {
+        listen      80;
+        server_name localhost;
+        root        /sites/demo;
+
+        # if /sites.png doesn't exist the request will be redirected to /inspect
+        # try_files /sites.png /inspect;
+
+        # @not-found is called `Named location`
+        # instead of path we can use it as a reliant path
+        try_files /sites.png /inspect @not_found;
+
+        location @not_found {
+            return 404 "The page you're looking for doesn't exists.";
+        }
+
+        location /inspect {
+            # 307 is redirect 
+            return 307 /sites.png
+        }
+
+    }
+}
+```
 
 ---
 
