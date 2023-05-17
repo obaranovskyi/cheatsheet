@@ -226,6 +226,11 @@ http {
 
 ---
 
+# Variables
+
+
+---
+
 ## Uninstall 
 Removes all but configs files:
 ```bash
