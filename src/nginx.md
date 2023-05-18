@@ -324,6 +324,80 @@ http {
 ```
 
 ---
+# If statements
+If statements considered bad practice.
+More here https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/
+---
+
+# Logging
+
+- Error Log
+- Access Log (Log all requests to the server)
+
+Logging is enabled by default.
+We configured logging in the following way:
+- `--error-log-path=/var/log/nginx/error.log`
+- `--http-log-path=/var/log/nginx/access.log`
+
+Setting the specific path for location:
+```nginx
+location /secure {
+    access_log /var/log/nginx/secure.access.log;
+    return 200 "You're secure now.";
+}
+```
+
+Logging to both:
+```nginx
+location /secure {
+    access_log /var/log/nginx/secure.access.log;
+    access_log /var/log/nginx/access.log;
+    return 200 "You're secure now.";
+}
+```
+
+To disable logging:
+```nginx
+location /secure {
+    access_log off;
+    return 200 "You're secure now.";
+}
+```
+
+Logging is very configurable, we formats, gzip, flush etc.
+https://docs.nginx.com/nginx/admin-guide/monitoring/logging/
+
+---
+
+# Root and index directive
+
+```
+...
+server {
+    root /sites/demo;
+
+    # which file to load if the request points to directory 
+    # serve `index.php` first, if there is no `index.php` serve `index.html`
+    index index.php index.html;
+
+    # 1. `$uri` - try to serve file from url
+    # 2. `$uri/` - in case it's folder serve above mentioned index
+    # 3. otherwise rewrite to 404
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+```
+
+```
+/sites  /demo    /  index.html
+|---------------|   |--------|
+     /                    /
+  root directive         /
+                      index directive
+```
+
+---
 
 ## Uninstall 
 Removes all but configs files:
