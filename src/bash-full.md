@@ -505,6 +505,40 @@ function greet() {
 greet "Brad" "36"
 ```
 
+## Range
+```bash
+touch {1..10}.txt
+touch {a..z}.txt
+touch {A..Z}.txt
+```
+
+## `xargs` (`gxargs` from `findutils` (brew install `findutils`))
+Construct argument list(s) and execute utility:
+
+```bash
+ls | rm # won't work, as we need to pass as arguments
+```
+It has to be done like this:
+```bash
+ls | xargs rm
+```
+moreover, now we can add the flags, like this:
+```bash
+ls | xargs rm -rf
+```
+this will remove folders as well
+
+One more interesting example is with using the `-i` flag. \
+We have 3 files `1 2 3`, an we want to rename them to `1.md 2.md 3.md` \
+```bash
+ls | xargs -i mv {} {}.md
+```
+`{}` - stands for the input argument (aka placeholder)
+now you have `1.md 2.md 3.md` 
+
+we can use delimeter:
+
+
 
 ## Create folder and write to a file
 ```bash
@@ -514,9 +548,14 @@ echo "Hello World" >> "hello/world.txt"
 echo "Created hello/world.txt"
 ```
 
-## Cheatsheet
-* https://devhints.io/bash#conditionals
-* https://linuxize.com/post/how-to-compare-strings-in-bash/
+## What does `--` means
+The double dash `--` means "end of command line flags."
+It tells ssh or any other valid shell command not to try to parse what comes after command line options.
+More on that [here](https://www.cyberciti.biz/faq/what-does-double-dash-mean-in-ssh-command/)
+
+
+## How to use `xargs`
+
 
 ## TODO - Important questions to answer
 * () vs (())
