@@ -543,8 +543,7 @@ ls | xargs -i mv {} {}.md
 `{}` - stands for the input argument (aka placeholder)
 now you have `1.md 2.md 3.md` 
 
-we can use delimeter:
-
+we can use [delimiter](https://linuxhint.com/xargs_linux/).
 
 
 ## Create folder and write to a file
@@ -561,15 +560,12 @@ It tells ssh or any other valid shell command not to try to parse what comes aft
 More on that [here](https://www.cyberciti.biz/faq/what-does-double-dash-mean-in-ssh-command/)
 
 
-## How to use `xargs`
 
 
 ## TODO - Important questions to answer
 * () vs (())
 * ''  vs ""
 * when to use single, or double quotes and when to use `${}` syntax with or without quotes 
-* understand how to use `xargs`
-* Understand how to use `.. -- ..`
 
 ## Resorces:
 - [The simplicity and complecity of using quotes on Linux](https://www.networkworld.com/article/3669850/the-simplicity-and-complexity-of-using-quotes-on-linux.html)
