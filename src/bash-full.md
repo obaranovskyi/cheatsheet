@@ -511,6 +511,13 @@ touch {1..10}.txt
 touch {a..z}.txt
 touch {A..Z}.txt
 ```
+```bash
+for i in {000..100}
+do
+    echo hello > "File${i}.txt"
+done
+```
+
 
 ## `xargs` (`gxargs` from `findutils` (brew install `findutils`))
 Construct argument list(s) and execute utility:
