@@ -252,8 +252,8 @@ Following are a few points to be noted when comparing strings:
 
 #### Are strings equal
 ```bash
-VAR1="Linuxize"
-VAR2="Linuxize"
+VAR1="Some value"
+VAR2="Some value"
 
 if [ "$VAR1" = "$VAR2" ]; then
     echo "Strings are equal."
@@ -305,7 +305,7 @@ fi
 ```
 
 ```bash
-VAR='Linuxize'
+VAR='Some value'
 if [[ -n $VAR ]]; then
   echo "String is not empty."
 fi
@@ -318,7 +318,7 @@ VAR="Arch Linux"
 case $VAR in
 
   "Arch Linux")
-    echo -n "Linuxize matched"
+    echo -n "Some value matched"
     ;;
 
   Fedora | CentOS)
@@ -328,7 +328,7 @@ esac
 ```
 #### Lexicographic comparison
 ```bash
-VAR1="Linuxize"
+VAR1="Some value"
 VAR2="Ubuntu"
 
 if [[ "$VAR1" > "$VAR2" ]]; then
@@ -338,6 +338,86 @@ elif [[ "$VAR1" < "$VAR2" ]]; then
 else
     echo "Strings are equal"
 fi
+```
+
+## Arrays
+
+#### Defining arrays
+```bash
+Fruits=('Apple' 'Banana' 'Orange')
+```
+
+```bash
+Fruits[0]="Apple"
+Fruits[1]="Banana"
+Fruits[2]="Orange"
+```
+
+#### Working with arrays
+```bash
+echo "${Fruits[0]}"           # Element #0
+echo "${Fruits[-1]}"          # Last element
+echo "${Fruits[@]}"           # All elements, space-separated
+echo "${#Fruits[@]}"          # Number of elements
+echo "${#Fruits}"             # String length of the 1st element
+echo "${#Fruits[3]}"          # String length of the Nth element
+echo "${Fruits[@]:3:2}"       # Range (from position 3, length 2)
+echo "${!Fruits[@]}"          # Keys of all elements, space-separated
+```
+
+#### Operations
+```bash
+Fruits=("${Fruits[@]}" "Watermelon")    # Push
+Fruits+=('Watermelon')                  # Also Push
+Fruits=( "${Fruits[@]/Ap*/}" )          # Remove by regex match
+unset Fruits[2]                         # Remove one item
+Fruits=("${Fruits[@]}")                 # Duplicate
+Fruits=("${Fruits[@]}" "${Veggies[@]}") # Concatenate
+lines=(`cat "logfile"`)                 # Read from file
+```
+
+#### Iterations
+```bash
+for i in "${arrayName[@]}"; do
+  echo "$i"
+done
+```
+
+## Dictionaries
+
+#### Defining 
+```bash
+declare -A sounds
+```
+
+```bash
+sounds[dog]="bark"
+sounds[cow]="moo"
+sounds[bird]="tweet"
+sounds[wolf]="howl"
+```
+
+#### Working with dictionaries
+```bash
+echo "${sounds[dog]}" # Dog's sound
+echo "${sounds[@]}"   # All values
+echo "${!sounds[@]}"  # All keys
+echo "${#sounds[@]}"  # Number of elements
+unset sounds[dog]     # Delete dog
+```
+
+#### Iteration
+Iterate over values
+```bash
+for val in "${sounds[@]}"; do
+  echo "$val"
+done
+```
+Iterate over keys
+```bash
+for key in "${!sounds[@]}"; do
+  echo "$key"
+done
 ```
 
 ## File conditions:
@@ -445,7 +525,7 @@ echo "Created hello/world.txt"
 * understand how to use `xargs`
 * Understand how to use `.. -- ..`
 
-## Resorces: 
+## Resorces:
 - [The simplicity and complecity of using quotes on Linux](https://www.networkworld.com/article/3669850/the-simplicity-and-complexity-of-using-quotes-on-linux.html)
 - [How to compare strings](https://linuxize.com/post/how-to-compare-strings-in-bash/)
 - [bash](https://devhints.io/bash)
