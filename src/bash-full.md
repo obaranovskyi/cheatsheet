@@ -1,6 +1,4 @@
-# Bash Cheat Sheet
-
-## Display info with `echo`:
+# Display info with `echo`:
 ```bash
 echo Hello World!
 ```
@@ -9,7 +7,7 @@ echo Hello World!
   In this case it should be used as last statement in the function or command.
 - `echo` isn't stable on different environments, it's better to use `printf`
 
-## Variables:
+# Variables:
 When you assign variable value there shouldn't be a space around the equal sign: `var=123` \
 Use lowercase underscore variables for regular variables.\
 For environment variables use uppercase underscore variable names.
@@ -27,13 +25,13 @@ greet_ending_2='ello'
 echo "h${greet_ending_1} John, or better to say h${greet_ending_2}"
 ```
 
-## Read user input
+# Read user input
 ```bash
 read -p "Enter your name: " name
 echo "Hello $name, nice to meet you!"
 ```
 
-## Reading the arguments
+# Reading the arguments
 `$1`, `$2`, `$3` ... - get argument by number \
 `@` - list of passed arguments \
 `$#` - variable returns the input size 
@@ -78,7 +76,7 @@ done
 ```
 `shift n` - shifts the argument position, where n is the number of positions to move
 
-## `if` statement
+# `if` statement
 When you use `if` statements the space has to be around the square brackets (`[`, and `]`), `if [ ... ]`
 
 ```bash
@@ -88,7 +86,7 @@ then
 fi
 ```
 
-## `test` command
+# `test` command
 Every command has it's exit code which is number:
 - `0` - is successful (`true`)
 - `1` and higher - is failure (`false`)
@@ -101,12 +99,12 @@ echo $?
 ```
 `$?` - is the last statement result
 
-## Stream types
+# Stream types
 * `0` - stands for standard input stream (STDIN)
 * `1` - stands for standard output stream (STDOUT)
 * `2` - stands for standard error stream (STDERR)
 
-## Stream redirections
+# Stream redirections
 We can redirect streams in the following way:
 * `1>&2` - STDOUT to STDERR 
 * `2>&1` - STDERR to STDOUT
@@ -192,7 +190,7 @@ Resolving Host
 **Note:** Here is the good explanation: https://www.youtube.com/watch?v=XGSK5xr_B_Q 
 
 
-## if-else
+# if-else
 ```bash
 if [ "$name" == "Brad" ];
 then
@@ -202,7 +200,7 @@ else
 fi
 ```
 
-## else-if (elif)
+# else-if (elif)
 ```bash
 if [ "$name" == "Brad" ];
 then
@@ -215,7 +213,7 @@ else
 fi
 ```
 
-## Number comparison
+# Number comparison
 ```bash
 num1=31
 num2=5
@@ -234,7 +232,7 @@ fi
 * `$val1 -lt $val2` - Returns true if `val1` is less than `val2`  
 * `$val1 -le $val2` - Returns true if `val1` is less than or equal to `val2`  
 
-## String comparison
+# String comparison
 * `string1 = string2` and `string1 == string2` - The equality operator returns true if the operands are equal.
   * Use the `=` operator with the `test [` command.
   * Use the `==` operator with the `[[` command for pattern matching.
@@ -250,7 +248,7 @@ Following are a few points to be noted when comparing strings:
 * Always use double quotes around the variable names to avoid any word splitting or globbing issues.
 * Bash does not segregate variables by “type”, variables are treated as integer or string depending on the context.
 
-#### Are strings equal
+## Are strings equal
 ```bash
 VAR1="Some value"
 VAR2="Some value"
@@ -273,12 +271,12 @@ else
 fi
 ```
 
-#### Logical and `&&` and or `||` to compare strings 
+## Logical and `&&` and or `||` to compare strings 
 ```bash
 [[ "string1" == "string2" ]] && echo "Equal" || echo "Not equal"
 ```
 
-#### Check if string contains a substring
+## Check if string contains a substring
 One approach is to use surround the substring with asterisk symbols `*` which means match all characters.
 ```bash
 VAR='GNU/Linux is an operating system'
@@ -296,7 +294,7 @@ if [[ $VAR =~ .*Linux.* ]]; then
 fi
 ```
 
-### Check if string is empty
+## Check if string is empty
 ```bash
 VAR=''
 if [[ -z $VAR ]]; then
@@ -326,7 +324,7 @@ case $VAR in
     ;;
 esac
 ```
-#### Lexicographic comparison
+## Lexicographic comparison
 ```bash
 VAR1="Some value"
 VAR2="Ubuntu"
@@ -342,7 +340,7 @@ fi
 
 ## Arrays
 
-#### Defining arrays
+## Defining arrays
 ```bash
 Fruits=('Apple' 'Banana' 'Orange')
 ```
@@ -353,7 +351,7 @@ Fruits[1]="Banana"
 Fruits[2]="Orange"
 ```
 
-#### Working with arrays
+## Working with arrays
 ```bash
 echo "${Fruits[0]}"           # Element #0
 echo "${Fruits[-1]}"          # Last element
@@ -365,7 +363,7 @@ echo "${Fruits[@]:3:2}"       # Range (from position 3, length 2)
 echo "${!Fruits[@]}"          # Keys of all elements, space-separated
 ```
 
-#### Operations
+## Operations
 ```bash
 Fruits=("${Fruits[@]}" "Watermelon")    # Push
 Fruits+=('Watermelon')                  # Also Push
@@ -376,20 +374,18 @@ Fruits=("${Fruits[@]}" "${Veggies[@]}") # Concatenate
 lines=(`cat "logfile"`)                 # Read from file
 ```
 
-#### Iterations
+## Iterations
 ```bash
 for i in "${arrayName[@]}"; do
   echo "$i"
 done
 ```
 
-## Dictionaries
-
-#### Defining 
+# Dictionaries
+## Defining 
 ```bash
 declare -A sounds
 ```
-
 ```bash
 sounds[dog]="bark"
 sounds[cow]="moo"
@@ -397,7 +393,7 @@ sounds[bird]="tweet"
 sounds[wolf]="howl"
 ```
 
-#### Working with dictionaries
+## Working with dictionaries
 ```bash
 echo "${sounds[dog]}" # Dog's sound
 echo "${sounds[@]}"   # All values
@@ -406,7 +402,7 @@ echo "${#sounds[@]}"  # Number of elements
 unset sounds[dog]     # Delete dog
 ```
 
-#### Iteration
+## Iteration
 Iterate over values
 ```bash
 for val in "${sounds[@]}"; do
@@ -420,7 +416,7 @@ for key in "${!sounds[@]}"; do
 done
 ```
 
-## File conditions:
+# File conditions:
 ```bash
 FILE="test.txt"
 if [ -e "$FILE" ];
@@ -442,7 +438,7 @@ fi
 `-x` - True if the file is an executable  
 
 
-## `case` statement
+# `case` statement
 ```bash
 read -p "Are you 21 or over? Y/N " ANSWER
 case "$ANSWER" in 
@@ -458,7 +454,7 @@ case "$ANSWER" in
 esac
 ```
 
-## simple `for` loop
+# simple `for` loop
 ```bash
 NAMES="Brad Kevin Alice Mark"
 for NAME in $NAMES
@@ -467,7 +463,7 @@ for NAME in $NAMES
 done
 ```
 
-## `for` loop to rename files
+# `for` loop to rename files
 ```bash
 FILES=$(ls *.txt)
 NEW="new"
@@ -478,7 +474,7 @@ for FILE in $FILES
 done
 ```
 
-## `while` loop - read through a file line by line
+# `while` loop - read through a file line by line
 ```bash
 LINE=1
 while read -r CURRENT_LINE
@@ -488,7 +484,104 @@ while read -r CURRENT_LINE
 done < "./new-1.txt"
 ```
 
-## Function
+# Parameter expansion
+## Basics
+```bash
+name="John"
+echo "${name}"
+echo "${name/J/j}"    #=> "john" (substitution)
+echo "${name:0:2}"    #=> "Jo" (slicing)
+echo "${name::2}"     #=> "Jo" (slicing)
+echo "${name::-1}"    #=> "Joh" (slicing)
+echo "${name:(-1)}"   #=> "n" (slicing from right)
+echo "${name:(-2):1}" #=> "h" (slicing from right)
+echo "${food:-Cake}"  #=> $food or "Cake"
+```
+```bash
+length=2
+echo "${name:0:length}"  #=> "Jo"
+```
+```bash
+str="/path/to/foo.cpp"
+echo "${str%.cpp}"    # /path/to/foo
+echo "${str%.cpp}.o"  # /path/to/foo.o
+echo "${str%/*}"      # /path/to
+
+echo "${str##*.}"     # cpp (extension)
+echo "${str##*/}"     # foo.cpp (basepath)
+
+echo "${str#*/}"      # path/to/foo.cpp
+echo "${str##*/}"     # foo.cpp
+
+echo "${str/foo/bar}" # /path/to/bar.cpp
+```
+
+```bash
+str="Hello world"
+echo "${str:6:5}"   # "world"
+echo "${str: -5:5}"  # "world"
+```
+
+```bash
+src="/path/to/foo.cpp"
+base=${src##*/}   #=> "foo.cpp" (basepath)
+dir=${src%$base}  #=> "/path/to/" (dirpath)
+```
+
+## Substitution
+```bash
+${foo%suffix} 	# Remove suffix
+${foo#prefix} 	# Remove prefix
+${foo%%suffix} 	# Remove long suffix
+${foo/%suffix} 	# Remove long suffix
+${foo##prefix} 	# Remove long prefix
+${foo/#prefix} 	# Remove long prefix
+${foo/from/to} 	# Replace first match
+${foo//from/to} # Replace all
+${foo/%from/to} # Replace suffix
+${foo/#from/to} # Replace prefix
+```
+
+## Manipulation
+```bash
+str="HELLO WORLD!"
+echo "${str,}"   #=> "hELLO WORLD!" (lowercase 1st letter)
+echo "${str,,}"  #=> "hello world!" (all lowercase)
+
+str="hello world!"
+echo "${str^}"   #=> "Hello world!" (uppercase 1st letter)
+echo "${str^^}"  #=> "HELLO WORLD!" (all uppercase)
+```
+
+## Comments
+```bash
+: '
+This is a
+multi line
+comment
+'
+```
+
+## Substrings
+```bash
+${foo:0:3} 	    # Substring (position, length)
+${foo:(-3):3} 	# Substring from the right
+```
+
+## Length
+```bash
+${#foo} # Length of $foo
+```
+
+## Default values
+```bash
+${foo:-val}       # $foo, or val if unset (or null)
+${foo:=val}       # Set $foo to val if unset (or null)
+${foo:+val}       # val if $foo is set (and not null)
+${foo:?message}   # Show error message and exit if $foo is unset (or null)
+```
+
+# Function
 ```bash
 function sayHello() {
   echo "Hello World"
@@ -496,7 +589,7 @@ function sayHello() {
 sayHello
 ```
 
-## Function with params
+# Function with params
 ```bash
 function greet() {
   echo "Hello, I am $1 and I am $2"
@@ -505,7 +598,7 @@ function greet() {
 greet "Brad" "36"
 ```
 
-## Range
+# Range
 ```bash
 touch {1..10}.txt
 touch {a..z}.txt
@@ -518,8 +611,140 @@ do
 done
 ```
 
+# Ownership and permissions
+## Check file permissions and ownership:
+```bash
+ls -l text.txt
+```
 
-## `xargs` (`gxargs` from `findutils` (brew install `findutils`))
+```
+drw-rw-r--   1  obaranovskyi staff 18 2020-07-17    17:18 text.txt
+```
+
+- `drw-rw-r--` - file permissions
+- `obaranovskyi` - owner
+- `staff` - group
+
+## File permissions:
+* User - File owner.
+* Group - A file can be owned by a group of users. 
+  Everyone in the group will have the same permissions.
+* Other - Everyone else, or permissions for the world.
+
+
+## Characters representing the permissions
+- `r` - Read permissions
+- `w` - Write permissions
+- `x` - Execute permissions
+- `-` - No permissions
+
+## Absolute/Numeric mode 
+```
++---------+------------------------+--------+
+| Number  | Permission Type        | Symbol |
++---------+------------------------+--------+
+| 0       | No Permissions         | -      |
++---------+------------------------+--------+
+| 1       | Execute                | -x     |
++---------+------------------------+--------+
+| 2       | Write                  | -w-    |
++---------+------------------------+--------+
+| 3       | Execute + Write        | -wx    |
++---------+------------------------+--------+
+| 4       | Read                   | r-     |
++---------+------------------------+--------+
+| 5       | Read + Execute         | r-x    |
++---------+------------------------+--------+
+| 6       | Read + Write           | rw-    |
++---------+------------------------+--------+
+| 7       | Read + Write + Execute | rwx    |
++---------+------------------------+--------+
+```
+
+## Using `chmod`
+
+### Symbolic mode
+* `+` - Adds a permission to a file or directory
+* `-` - Removes the permission
+* `=` Sets the permissions or overrides the permissions that were set earlier.
+
+### User denotations
+* `u` - user/owner
+* `g` - group
+* `o` - other
+* `a` - all
+
+a few example:
+```bash
+chmod o=rwx text.txt # set permissions to the others
+chmod g+x text.txt   # add execute permissions to the group
+chmod u-r text.txt   # remove read permission for the user
+```
+
+### Using `chown` to change ownership
+```bash
+chown user filename         # Changing the ownership of a file or directory
+chown user:group filename   # Changing user and group ownership
+```
+
+a few examples:
+```bash
+sudo chown obaranovskyi text.txt    # Changing the file ownership to `obaranovskyi` 
+```
+
+### Using `chgrp` to change group
+```bash
+sudo chgrp obaranovskyi text.txt
+```
+**Note:** to print existing groups type `groups`.
+
+# Process management
+## Getting information
+* `ps` - Display processes that are running in the current session
+* `ps aux` - Display all running processes with detailed information.
+```
+`USER` - Username of the process owner.
+`TTY`- terminal type
+`TIME+` - total time the process has been running
+`CMD`	- name of the command that launches the process
+`%CPU` - Percentage of CPU used by the process
+`%MEM` - Percentage of RAM used by the process
+`S` - state of the process
+    `D` - uninterruptible sleep
+    `R` - running
+    `S` - sleeping
+    `T` - traced or stopped
+    `Z` - zombie
+```
+* `ps -f 1` - Find process by PID
+* `ps -u` - Dispay process list by real user Id or name
+* `top`, `htop`, `bpython`, `vtop` - Display running processes
+* `sleep 1` - Sleep 1 second
+* `lsof -i :8000` - Find process including PID details which runs on port 8000
+
+## Search for Process
+* `ps aux | grep nxinx` - Search for a process id (PID) by process name
+* `pgrep <process_name>` - Search for a process id (PID) by process name
+
+## Foreground and background the process
+* `sleep 300 &` - Run `sleep` command in the background
+* `jobs` - Display status of jobs in the current session. It might be needed to display suspended processes.
+* `jobs -l` - Display status of jobs with the additional information, such as PID
+* `jobs -r` - Display running jobs
+* `jobs -s` - Display stopped jobs
+* `fg %1` - Foreground the process, `%1` is the job nuber, it is shown at the very beginning
+* `Ctrl+z` - Suspend the process
+
+## Killing the process
+* `kill -l` - Display a list of signals in your terminal
+* `kill -15 4664` - Terminate the process by PID in the most common way, `-15` is `SIGNTERM`
+* `kill -9 4666` - Terminate the process by PID in hard way by sending signal to kernel, `-9` is `SIGKILL`
+* `killall telegram` - Kill all processes named 'telegram'
+* `pkill <process_name>` - Terminate process by name
+* `Ctrl+c` - `SIGINT`
+* `Ctrl+\` - `SIGQUIT`
+
+# `xargs` (`gxargs` from `findutils` (brew install `findutils`))
 Construct argument list(s) and execute utility:
 
 ```bash
@@ -546,20 +771,10 @@ now you have `1.md 2.md 3.md`
 we can use [delimiter](https://linuxhint.com/xargs_linux/).
 
 
-## Create folder and write to a file
-```bash
-mkdir hello
-touch "hello/world.txt"
-echo "Hello World" >> "hello/world.txt"
-echo "Created hello/world.txt"
-```
-
-## What does `--` means
+# What does `--` means
 The double dash `--` means "end of command line flags."
 It tells ssh or any other valid shell command not to try to parse what comes after command line options.
 More on that [here](https://www.cyberciti.biz/faq/what-does-double-dash-mean-in-ssh-command/)
-
-
 
 
 ## TODO - Important questions to answer
