@@ -324,9 +324,11 @@ http {
 ```
 
 ---
+
 # If statements
 If statements considered bad practice.
 More here https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/
+
 ---
 
 # Logging
