@@ -1,3 +1,5 @@
+* `brew update` - Update brew itself
+* `brew upgrade program` - Upgrade program version
 * `brew services list` - Show installed services with the statuses on OSX
 * `brew services start nginx` - Start service on OSX
 * `brew services stop nginx` - Stop service on OSX
