@@ -13,7 +13,7 @@
 `<prefix> z` - Toggle panel zoom
 `<prefix> ;` - Focus previously focused panel
 `<prefix> !` - Convert panel into window
-`<prefix> x` - Close pane
+`<prefix> x` - Close panel
 `Ctrl+l` - Focus left panel
 `Ctrl+h` - Focus right panel
 `Ctrl+k` - Focus panel above
