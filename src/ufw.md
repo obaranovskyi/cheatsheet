@@ -98,15 +98,5 @@ sudo ufw allow "Apache Full"
 * `sudo ufw allow https`, `sudo ufw allow 443` - Allow https
 * `sudo ufw allow proto tcp from any to any port 80,443` - Allow all incoming http and https
 
-
-
-
-
-
-
-
-
-
-
 # Resources
 - [Basic UFW](https://serverspace.io/support/help/osnovnye-komandy-ufw/)
