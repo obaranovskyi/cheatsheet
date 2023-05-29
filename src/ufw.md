@@ -101,9 +101,9 @@ sudo ufw allow "Apache Full"
 
 # Remote server configuration
 ```bash
-sudo ufw allow OpenSSH # Enable ssh
-sudo ufw enable # Enable firewall
-sudo ufw allow 443 # Enable https
+sudo ufw allow OpenSSH # Enable ssh, to be able connect through the ssh
+sudo ufw enable # Enable firewall, so when the remote server will restart firewall will run as well
+sudo ufw allow 443 # Enable https, so that nginx/apache will be exposed
 ```
 # Resources
 - [Basic UFW](https://serverspace.io/support/help/osnovnye-komandy-ufw/)
