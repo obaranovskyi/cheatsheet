@@ -36,4 +36,11 @@ Note: we can add another line `obaranovksyi ALL=(ALL) ALL`, this will work as we
 - `sudo useradd obaranovskyi`
 - `sudo passwd username`
 
+# Don't user root user
+```bash
+adduser obaranovskyi # add user
+usermod -aG sudo obaranovskyi # Add user to sudo group
+
+```
+
 Note: to remove user run `userdel obaranovskyi --force`
