@@ -31,6 +31,20 @@ read -p "Enter your name: " name
 echo "Hello $name, nice to meet you!"
 ```
 
+# Read user input and repeat
+```bash
+while true;
+do
+    read -r -p "Yes or no? " response   
+    if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+    then
+        echo "You chose yes"
+    else
+        exit 0
+    fi
+done
+```
+
 # Reading the arguments
 `$1`, `$2`, `$3` ... - get argument by number \
 `@` - list of passed arguments \
