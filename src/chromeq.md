@@ -1,1 +1,0 @@
-- `Cmnd+n` - open window number `n`
